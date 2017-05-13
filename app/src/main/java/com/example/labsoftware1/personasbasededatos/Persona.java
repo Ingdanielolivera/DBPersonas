@@ -83,9 +83,9 @@ public class Persona {
         PersonaSQLiteOpenHelper aux =new PersonaSQLiteOpenHelper(contexto,"DBPersonas",null,1);
         db = aux.getWritableDatabase();
 
-        //insertar forma 1
+      /*  //insertar forma 1
         sql ="INSERT INTO Personas Values('"+this.getFoto()+"','"+this.getCedula()+"','"+this.getNombre()+"','"+this.getApellido()+"','"+this.getSexo()+"','"+this.getPasatiempo()+"')";
-        db.execSQL(sql);
+        db.execSQL(sql);*/
         //insertar forma 2
 
         ContentValues nuevoRegistro = new ContentValues();
@@ -93,7 +93,8 @@ public class Persona {
         nuevoRegistro.put("cedula",this.getCedula());
         nuevoRegistro.put("nombre",this.getNombre());
         nuevoRegistro.put("apellido",this.getApellido());
-        nuevoRegistro.put("sexo",this.getPasatiempo());
+        nuevoRegistro.put("sexo",this.getSexo());
+        nuevoRegistro.put("pasatiempo",this.getPasatiempo());
 
         db.insert("Personas",null, nuevoRegistro);
         db.close();

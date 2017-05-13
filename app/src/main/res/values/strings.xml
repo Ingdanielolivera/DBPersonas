@@ -6,7 +6,7 @@
     <string name="apellido">Apellido</string>
     <string name="nombre">Nombre</string>
     <string name="sexo">Sexo</string>
-    <string name="Masculino" >Masculino</string>
+    <string name="masculino" >Masculino</string>
     <string name="femenino">Femenino</string>
     <string name="pasatiempos">Pasatiempos</string>
     <string name="programar">Programar</string>
