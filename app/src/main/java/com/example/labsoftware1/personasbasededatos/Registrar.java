@@ -154,10 +154,13 @@ public class Registrar extends AppCompatActivity {
                     chkBailar.setChecked(true);
 
                 //Ocultar teclado luego de buscar
-                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(cajaCedula.getWindowToken(), 0);
-            }
 
+            } else {
+                new AlertDialog.Builder(this).setMessage("Cedula no encontrada registrese").setCancelable(true).show();
+                cajaNombre.requestFocus();
+            }
         }
     }
 
