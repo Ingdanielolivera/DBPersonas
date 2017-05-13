@@ -1,6 +1,7 @@
 package com.example.labsoftware1.personasbasededatos;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class Registrar extends AppCompatActivity {
     private EditText cajaCedula;
@@ -160,18 +162,36 @@ public class Registrar extends AppCompatActivity {
     }
 
 
-    public void eliminar(View v){
-        Persona p;
+    public void eliminar(final View v){
+        final Persona p;
         if (validarCedula()) {
             p = Datos.buscarPersona(getApplicationContext(), cajaCedula.getText().toString());
             if (p != null) {
-                p.eliminar(getApplicationContext());
-                limpiar();
-                new AlertDialog.Builder(this).setMessage("Persona Eliminada Exitosamente!").setCancelable(true).show();
-            }
+                new AlertDialog.Builder(this)
+                        .setTitle("Eliminar entrada")
+                        .setMessage("Estas seguro de eliminar a: " + "\n" +"Cedula: "+ cajaCedula.getText()+ "\n"+"Nombre: "+ cajaNombre.getText()+"\n"+"Apellido: "+cajaApellido.getText())
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                p.eliminar(getApplicationContext());
+                                limpiar();
+                                Toast toast = Toast.makeText(getApplicationContext(), "Persona Eliminada Exitosamente!", Toast.LENGTH_LONG);
+                                toast.show();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
 
+                        .show();
+            }
         }
     }
+
+
+
 
 
 }
