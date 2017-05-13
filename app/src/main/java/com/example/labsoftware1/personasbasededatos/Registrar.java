@@ -150,6 +150,10 @@ public class Registrar extends AppCompatActivity {
                     chkLeer.setChecked(true);
                 if (p.getPasatiempo().contains(getResources().getString(R.string.bailar)))
                     chkBailar.setChecked(true);
+
+                //Ocultar teclado luego de buscar
+                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(cajaCedula.getWindowToken(), 0);
             }
 
         }
@@ -173,6 +177,8 @@ public class Registrar extends AppCompatActivity {
                     chkLeer.setChecked(true);
                 if (p.getPasatiempo().contains(getResources().getString(R.string.bailar)))
                     chkBailar.setChecked(true);
+
+
             }
 
         }

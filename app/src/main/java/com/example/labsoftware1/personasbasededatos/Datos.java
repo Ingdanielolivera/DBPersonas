@@ -76,7 +76,5 @@ public class Datos {
         db.close();
         return p;
     }
-    
-
 
 }
