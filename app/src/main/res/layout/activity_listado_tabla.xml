@@ -10,58 +10,81 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.labsoftware1.personasbasededatos.Listado_tabla">
 
-    <TableLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/tblPersonas"
-        android:stretchColumns="*">
+        android:layout_height="match_parent">
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TextView
-                android:text="@string/numero"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView8"
-                android:textStyle="normal|bold"
-                android:textSize="18sp" />
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:text="@string/cedula"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView7"
-                android:textSize="18sp"
-                android:textStyle="normal|bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <TextView
-                android:text="@string/nombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView6"
-                android:textSize="18sp"
-                android:textStyle="normal|bold" />
+                    <TableLayout
+                        android:id="@+id/tblPersonas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:stretchColumns="*">
 
-            <TextView
-                android:text="@string/sexo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView5"
-                android:textSize="18sp"
-                android:textStyle="normal|bold" />
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
 
-            <TextView
-                android:text="@string/pasatiempos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView3"
-                android:textSize="18sp"
-                android:textStyle="normal|bold" />
-        </TableRow>
+                            <TextView
+                                android:id="@+id/textView8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/numero"
+                                android:textSize="18sp"
+                                android:textStyle="normal|bold" />
 
-    </TableLayout>
+                            <TextView
+                                android:id="@+id/textView7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/cedula"
+                                android:textSize="18sp"
+                                android:textStyle="normal|bold" />
+
+                            <TextView
+                                android:id="@+id/textView6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/nombre"
+                                android:textSize="18sp"
+                                android:textStyle="normal|bold" />
+
+                            <TextView
+                                android:id="@+id/textView5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sexo"
+                                android:textSize="18sp"
+                                android:textStyle="normal|bold" />
+
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/pasatiempos"
+                                android:textSize="18sp"
+                                android:textStyle="normal|bold" />
+                        </TableRow>
+
+                    </TableLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>

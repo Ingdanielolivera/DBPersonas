@@ -67,14 +67,14 @@ public class Registrar extends AppCompatActivity {
             if(rdMasculino.isChecked())sexo =getResources().getString(R.string.masculino);
             else sexo = getResources().getString(R.string.femenino);
             if (chkProgramar.isChecked()){
-                pasatiempo=getResources().getString(R.string.programar)+",";
+                pasatiempo=getResources().getString(R.string.programar)+", ";
             }if (chkLeer.isChecked()){
-                pasatiempo= pasatiempo + getResources().getString(R.string.leer)+",";
+                pasatiempo= pasatiempo + getResources().getString(R.string.leer)+", ";
             }if (chkBailar.isChecked()){
                 pasatiempo= pasatiempo + getResources().getString(R.string.bailar)+", ";
             }
 
-            pasatiempo =pasatiempo.substring(pasatiempo.length()-1);
+            pasatiempo =pasatiempo.substring(0,pasatiempo.length()-2);
 
             p = new  Persona(foto,cedula,nombre,apellido,sexo,pasatiempo);
             p.guardar(getApplicationContext());
