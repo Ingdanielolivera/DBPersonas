@@ -34,13 +34,13 @@
             android:layout_marginTop="20dp">
 
             <EditText
+                android:id="@+id/txtcedula"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/txtcedula"
                 android:layout_weight="1"
-                android:hint="@string/cedula" />
+                android:ems="10"
+                android:hint="@string/cedula"
+                android:inputType="number" />
 
             <Button
                 android:text="@string/buscar"
@@ -162,6 +162,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="limpia"
                 android:text="@string/limpiar" />
         </LinearLayout>
 
