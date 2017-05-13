@@ -158,32 +158,20 @@ public class Registrar extends AppCompatActivity {
 
         }
     }
-    public void modificar(View v) {
+
+
+    public void eliminar(View v){
         Persona p;
         if (validarCedula()) {
             p = Datos.buscarPersona(getApplicationContext(), cajaCedula.getText().toString());
             if (p != null) {
-                //llena campos de Nombre y Apellido
-                cajaNombre.setText(p.getNombre());
-                cajaApellido.setText(p.getApellido());
-                //chekea sexo
-                if (p.getSexo().equalsIgnoreCase(getResources().getString(R.string.masculino)))
-                    rdMasculino.setChecked(true);
-                else rdFemenino.setChecked(true);
-                //chekea pasatiempos
-                if (p.getPasatiempo().contains(getResources().getString(R.string.programar)))
-                    chkProgramar.setChecked(true);
-                if (p.getPasatiempo().contains(getResources().getString(R.string.leer)))
-                    chkLeer.setChecked(true);
-                if (p.getPasatiempo().contains(getResources().getString(R.string.bailar)))
-                    chkBailar.setChecked(true);
-
-
+                p.eliminar(getApplicationContext());
+                limpiar();
+                new AlertDialog.Builder(this).setMessage("Persona Eliminada Exitosamente!").setCancelable(true).show();
             }
 
         }
     }
-
 
 
 }

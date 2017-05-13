@@ -74,6 +74,7 @@ public class Persona {
         this.pasatiempo = pasatiempo;
     }
 
+
     public void guardar (Context contexto){
         //declarar las variables
         SQLiteDatabase db;
@@ -97,14 +98,23 @@ public class Persona {
         nuevoRegistro.put("pasatiempo",this.getPasatiempo());
 
         db.insert("Personas",null, nuevoRegistro);
+        //cierro la conexión
         db.close();
     }
 
-    
+    public void eliminar(Context contexto){
+        //declarar las variables
+        SQLiteDatabase db;
+        String sql;
 
+        //Abrir la conexión de base de datos en modo escritura
+        PersonaSQLiteOpenHelper aux = new PersonaSQLiteOpenHelper(contexto, "DBPersonas", null, 1);
+        db = aux.getWritableDatabase();
 
-
-
+        sql="DELETE FROM Personas where cedula='"+getCedula()+"'";
+        db.execSQL(sql);
+        db.close();
+    }
 
 
 }
