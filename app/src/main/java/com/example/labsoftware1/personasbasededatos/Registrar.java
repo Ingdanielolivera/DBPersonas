@@ -64,8 +64,12 @@ public class Registrar extends AppCompatActivity {
             foto = String.valueOf(fotoAleatoria());
             nombre =cajaNombre.getText().toString();
             apellido = cajaApellido.getText().toString();
+
+            //Verifico si es masculino o Femenino
             if(rdMasculino.isChecked())sexo =getResources().getString(R.string.masculino);
             else sexo = getResources().getString(R.string.femenino);
+
+            //Verifico cuales estan chekeados
             if (chkProgramar.isChecked()){
                 pasatiempo=getResources().getString(R.string.programar)+", ";
             }if (chkLeer.isChecked()){
@@ -74,6 +78,7 @@ public class Registrar extends AppCompatActivity {
                 pasatiempo= pasatiempo + getResources().getString(R.string.bailar)+", ";
             }
 
+            //Elimina la , y el espacio final
             pasatiempo =pasatiempo.substring(0,pasatiempo.length()-2);
 
             p = new  Persona(foto,cedula,nombre,apellido,sexo,pasatiempo);

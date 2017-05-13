@@ -23,6 +23,7 @@ public class Principal extends AppCompatActivity {
         opc = getResources().getStringArray(R.array.opciones);
         adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,opc);
         opciones.setAdapter(adapter);
+
         opciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
