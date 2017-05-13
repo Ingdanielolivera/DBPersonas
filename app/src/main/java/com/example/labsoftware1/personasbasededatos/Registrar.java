@@ -36,7 +36,7 @@ public class Registrar extends AppCompatActivity {
         chkProgramar = (CheckBox) findViewById(R.id.chkProgramar);
         chkLeer = (CheckBox) findViewById(R.id.chkLeer);
         chkBailar = (CheckBox) findViewById(R.id.chkBailar);
-
+        ocultartodo();
     }
 
     public boolean validartodo() {
@@ -114,7 +114,7 @@ public class Registrar extends AppCompatActivity {
         chkProgramar.setChecked(false);
         chkBailar.setChecked(false);
         chkLeer.setChecked(false);
-        cajaCedula.requestFocus();
+
     }
 
 
@@ -136,6 +136,7 @@ public class Registrar extends AppCompatActivity {
     public void buscar(View v) {
         Persona p;
         if (validarCedula()) {
+
             p = Datos.buscarPersona(getApplicationContext(), cajaCedula.getText().toString());
             if (p != null) {
                 //llena campos de Nombre y Apellido
@@ -168,6 +169,7 @@ public class Registrar extends AppCompatActivity {
     public void eliminar(final View v){
         final Persona p;
         if (validarCedula()) {
+
             p = Datos.buscarPersona(getApplicationContext(), cajaCedula.getText().toString());
             if (p != null) {
                 new AlertDialog.Builder(this)
@@ -194,6 +196,79 @@ public class Registrar extends AppCompatActivity {
     }
 
 
+
+    public void modificar (View v) {
+        Persona p, p2;
+        String nombre, apellido, sexo, pasatiempo="";
+        if (validarCedula()) {
+            p = Datos.buscarPersona(getApplicationContext(), cajaCedula.getText().toString());
+            if (p != null) {
+
+                nombre = cajaNombre.getText().toString();
+                apellido = cajaApellido.getText().toString();
+
+                //Verifico si es masculino o Femenino
+                if (rdMasculino.isChecked()) sexo = getResources().getString(R.string.masculino);
+                else sexo = getResources().getString(R.string.femenino);
+
+                //Verifico cuales estan chekeados
+                if (chkProgramar.isChecked()) {
+                    pasatiempo = getResources().getString(R.string.programar) + ", ";
+                }
+                if (chkLeer.isChecked()) {
+                    pasatiempo = pasatiempo + getResources().getString(R.string.leer) + ", ";
+                }
+                if (chkBailar.isChecked()) {
+                    pasatiempo = pasatiempo + getResources().getString(R.string.bailar) + ", ";
+                }
+                //Elimina la , y el espacio final
+                pasatiempo = pasatiempo.substring(0, pasatiempo.length() - 2);
+
+                p2 = new Persona(p.getFoto(), p.getCedula(), nombre, apellido, sexo, pasatiempo);
+                p2.modificar(getApplicationContext());
+                new AlertDialog.Builder(this).setMessage("Usuario modificado exitosamente").setCancelable(true).show();
+                limpiar();
+            }
+        }
+    }
+
+
+
+    public void ocultartodo(){
+        cajaNombre.setEnabled(false);
+        cajaApellido.setEnabled(false);
+
+        rdMasculino.setEnabled(false);
+        rdFemenino.setEnabled(false);
+
+        chkLeer.setEnabled(false);
+        chkProgramar.setEnabled(false);
+        chkBailar.setEnabled(false);
+        
+    }
+
+
+    public void mostrartodo(){
+        cajaNombre.setEnabled(true);
+        cajaApellido.setEnabled(true);
+
+        rdMasculino.setEnabled(true);
+        rdFemenino.setEnabled(true);
+
+        chkLeer.setEnabled(true);
+        chkProgramar.setEnabled(true);
+        chkBailar.setEnabled(true);
+    }
+
+    public void cedulaoff(){
+        cajaCedula.setEnabled(false);
+    }
+
+    public void cedulaon() {
+        cajaCedula.setEnabled(true);
+        cajaCedula.requestFocus();
+        ocultartodo();
+    }
 
 
 

@@ -87,8 +87,8 @@ public class Persona {
       /*  //insertar forma 1
         sql ="INSERT INTO Personas Values('"+this.getFoto()+"','"+this.getCedula()+"','"+this.getNombre()+"','"+this.getApellido()+"','"+this.getSexo()+"','"+this.getPasatiempo()+"')";
         db.execSQL(sql);*/
-        //insertar forma 2
 
+        //insertar forma 2
         ContentValues nuevoRegistro = new ContentValues();
         nuevoRegistro.put("foto",this.getFoto());
         nuevoRegistro.put("cedula",this.getCedula());
@@ -96,7 +96,7 @@ public class Persona {
         nuevoRegistro.put("apellido",this.getApellido());
         nuevoRegistro.put("sexo",this.getSexo());
         nuevoRegistro.put("pasatiempo",this.getPasatiempo());
-
+        //Inserto en la base de datos
         db.insert("Personas",null, nuevoRegistro);
         //cierro la conexión
         db.close();
@@ -111,8 +111,29 @@ public class Persona {
         PersonaSQLiteOpenHelper aux = new PersonaSQLiteOpenHelper(contexto, "DBPersonas", null, 1);
         db = aux.getWritableDatabase();
 
+        //Colsulta sql para borrar
         sql="DELETE FROM Personas where cedula='"+getCedula()+"'";
+        //Ejecutar
         db.execSQL(sql);
+        //cierro la conexión
+        db.close();
+    }
+
+
+    public void modificar (Context contexto) {
+        //declarar las variables
+        SQLiteDatabase db;
+        String sql;
+
+        //Abrir la conexión de base de datos en modo escritura
+        PersonaSQLiteOpenHelper aux = new PersonaSQLiteOpenHelper(contexto, "DBPersonas", null, 1);
+        db = aux.getWritableDatabase();
+
+        //consulta para actualizar
+        sql ="UPDATE Personas"+ " SET nombre='"+this.getNombre()+"',"+"apellido='"+this.getApellido()+"',"+ "sexo='"+this.getSexo()+"',"+"pasatiempo='"+this.getPasatiempo()+"' "+ "WHERE cedula='"+this.getCedula()+"'";
+        //Ejecutar
+        db.execSQL(sql);
+        //cierro la conexión
         db.close();
     }
 

@@ -137,11 +137,12 @@
                 android:text="@string/guardar" />
 
             <Button
-                android:text="@string/modificar"
+                android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/button2"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="modificar"
+                android:text="@string/modificar" />
 
         </LinearLayout>
 
