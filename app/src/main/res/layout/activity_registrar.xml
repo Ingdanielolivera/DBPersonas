@@ -43,11 +43,12 @@
                 android:inputType="number" />
 
             <Button
-                android:text="@string/buscar"
+                android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/button"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="buscar"
+                android:text="@string/buscar" />
 
         </LinearLayout>
 

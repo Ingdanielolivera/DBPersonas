@@ -14,7 +14,7 @@ public class Listado extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado);
-        
+
         lstPersonalizado =(ListView)findViewById(R.id.lstListado);
         personas = Datos.traerPersonas(getApplicationContext());
         adapter = new AdaptadorPersona(getApplicationContext(),personas);
