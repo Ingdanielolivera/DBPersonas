@@ -157,10 +157,10 @@ public class Registrar extends AppCompatActivity {
                 //Ocultar teclado luego de buscar
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(cajaCedula.getWindowToken(), 0);
-
+                mostrartodo();
             } else {
                 new AlertDialog.Builder(this).setMessage("Cedula no encontrada registrese").setCancelable(true).show();
-                cajaNombre.requestFocus();
+                mostrartodo();
             }
         }
     }
@@ -244,7 +244,7 @@ public class Registrar extends AppCompatActivity {
         chkLeer.setEnabled(false);
         chkProgramar.setEnabled(false);
         chkBailar.setEnabled(false);
-        
+
     }
 
 
@@ -258,6 +258,8 @@ public class Registrar extends AppCompatActivity {
         chkLeer.setEnabled(true);
         chkProgramar.setEnabled(true);
         chkBailar.setEnabled(true);
+        cajaNombre.requestFocus();
+        cedulaoff();
     }
 
     public void cedulaoff(){
